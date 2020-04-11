@@ -4,15 +4,15 @@ Drop this file in your %appdata%\mp3tag\data\sources folder
 
 This script will pull the following tags from Audible.com:
 
-Title = ALBUM
-Subtitle of Album = SUBTITLE
-Original Year = YEAR
-Narrator = COMPOSER
-Publisher's Summary = COMMENT
-Series Name = SERIES
-Series Number = SERIES-PART
-Author = ARTIST and ALBUMARTIST
-ALBUMSORT = %series% %series-part% - %album%
+   Title = ALBUM  
+   Subtitle of Album = SUBTITLE  
+   Original Year = YEAR  
+   Narrator = COMPOSER  
+   Publisher's Summary = COMMENT  
+   Series Name = SERIES  
+   Series Number = SERIES-PART  
+   Author = ARTIST and ALBUMARTIST  
+   ALBUMSORT = %series% %series-part% - %album%  
 
 Once you pull and set the tags, make sure the track numbers are set/fixed by hitting ctrl-k
 
