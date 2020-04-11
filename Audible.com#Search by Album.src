@@ -1,0 +1,232 @@
+# ###################################################################
+#
+# Mp3tag parsing for Audible.de, created by dano on 2013-03-11
+#
+# 2013-09-20: Updated
+# 2020-03-24: Updated
+# 2020-04-06: Updated to Audible.com
+#
+# This file should be in your sources dir. 
+# On Windows XP it's C:\Documents and Settings\*username*\Application Data\Mp3tag\data\sources
+#
+#
+
+
+[Name]=Audible.com
+[BasedOn]=www.audible.com
+[IndexUrl]=https://www.audible.com/search?keywords=
+[AlbumUrl]=https://www.audible.com
+[WordSeperator]=+
+[IndexFormat]=%_url%|%Album%|%Author%|%Duration%|%Year%
+[SearchBy]=$regexp(%album%,'[- ]+cd ?\d+$',,1)
+[Encoding]=url-utf-8
+
+
+[ParserScriptIndex]=...
+# ###################################################################
+#					I  N  D  E  X
+# ###################################################################
+#DebugWriteInput "C:\Users\x\Desktop\mp3tag.html"
+#Debug "ON" "C:\Users\x\Desktop\mp3tagdebug.txt"
+
+
+
+joinuntil "</html>"
+regexpreplace "[\r\n]+" ""
+regexpreplace ".+results" "results"
+regexpreplace "<script asyn.+" ""
+regexpreplace "\s\s+" " "
+regexpreplace "\t+" " "
+replace "\" >" "\">"
+replace "> <" "><"
+replace "Running Time:" ""
+
+
+findinline "results"
+findinline "<h3 class=\"bc-heading"
+
+do	
+	#  Url		
+	findinline "href=\""
+	sayuntil "\""
+	say "|"
+	
+	# Album
+	findinline ">"
+	sayuntil "<"
+	
+	findinline "</li>"
+	if "<li class=\"bc-list-item subtitle"
+		say " - "
+		findinline "bc-color-secondary\">"
+		sayuntil "<"
+		
+	else
+		if  "<li class=\"bc-list-item bc"
+			say " - "
+			findinline ">"
+			sayuntil "<"
+		endif
+	
+	endif
+	say "|" 
+	
+	#Author
+	findinline "authorLabel\">"
+	findinline "href="
+	findinline ">"
+	sayuntil "<"
+	say "|"
+
+	
+    # Duration
+    findinline "runtimeLabel\">"
+    findinline "bc-color-secondary\">"
+    sayuntil "<"
+    say "|"
+	
+    # Year
+    findinline "Release date:"
+	sayuntil "<"
+   
+    
+
+    
+	saynewline
+	 
+   	findinline "<h3 class=\"bc-heading " 1 1
+    
+while "bc-color-link" 99
+
+
+[ParserScriptAlbum]=...
+# ###################################################################
+#					A  L  B  U  M
+# ###################################################################
+
+
+
+# Asin
+findline "\"productAsin\" value=\""
+findinline "\"productAsin\" value=\""
+outputto "Asin"
+sayuntil "\""
+gotoline 1
+
+# Album
+outputto "Album"
+findline "<h1  class=\"bc-heading"
+joinuntil "authorLabel"
+findinline ">"
+sayuntil "<"
+
+# Subtitle of Album
+regexpreplace "  +" " "
+replace "<span class=\"bc-text bc-size-medium\" ></span>" ""
+findinline "bc-text bc-size-medium\" " 1 1
+if ">"
+	movechar 1
+	outputto "Subtitle"
+	sayuntil "</"
+else
+	gotoline 1
+endif
+
+
+
+# Author
+outputto "Artist"
+findline "authorLabel"
+moveline 1 1
+joinuntil "</span>"
+regexpreplace "</?[^><]+>" ""
+unspace
+regexpreplace "  +" " "
+regexpreplace ".+By:" ""
+sayrest
+outputto "albumartist"
+regexpreplace "</?[^><]+>" ""
+unspace
+regexpreplace "  +" " "
+regexpreplace ".+By:" ""
+sayrest
+
+# narratorLabel
+outputto "Composer"
+findline "narratorLabel"
+moveline 1 1
+joinuntil "</span>"
+regexpreplace "</?[^><]+>" ""
+unspace
+regexpreplace "  +" " "
+regexpreplace ".+Narrated by:" ""
+sayrest
+
+
+
+# Grouping / Series
+findline "seriesLabel" 1 1
+unspace
+if "seriesLabel"
+	outputto "SERIES"
+	findline "href="
+	findline ">"
+	findinline ">"
+	sayuntil "<"
+	outputto "series-part"
+	findline "a>, "
+	findinline "a>, Book "
+	sayuntil "<"
+else
+	gotoline 1
+endif
+
+
+# Genres
+outputto "Genre"
+findline "categoriesLabel"
+joinuntil "</span>"
+findinline "href="
+findinline ">"
+sayuntil "<"
+
+# 2nd Genre
+#outputto "Category"
+#findinline "href="
+#findinline ">"
+#sayuntil "<"
+
+
+
+# Description
+findline "Publisher's Summary</h2>"
+outputto "Comment"
+findline "<span class"
+joinuntil "</span>"
+regexpreplace "</?[^><]+>" ""
+unspace
+regexpreplace "  +" " "
+replace "bc-color-secondary\" >" ""
+sayrest
+
+# Year
+findline "(P)"
+outputto "Year"
+findinline "(P)"
+SayNChars 4
+
+# Cover
+outputto "Coverurl"
+findline "\"image\": \""
+replace "_SL175_" "_SS500_"
+replace "_SL300_" "_SS500_"
+findinline "\"image\": \""
+sayuntil "\""
+
+#set "Albumsort"
+outputto "Albumsort"
+sayoutput "series"
+say " "
+sayoutput "series-part"
+say " - "
+sayoutput "album"
