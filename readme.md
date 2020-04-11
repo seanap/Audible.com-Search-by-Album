@@ -13,7 +13,7 @@ This script will pull the following tags from Audible.com:
    Publisher's Summary = COMMENT  
    Series Name = SERIES  
    Series Number = SERIES-PART  
-   Cover Art = COVER
+   Cover Art = COVER  
    Author = ARTIST and ALBUMARTIST  
    ALBUMSORT = %series% %series-part% - %album%  
 
@@ -21,5 +21,6 @@ This script will pull the following tags from Audible.com:
    
 Once you pull and set the tags, then make sure the track numbers are set/fixed by hitting ctrl-k
 
-Then set the filename and folder structure by clicking the Tag-Filename button and set the 
+Then set the filename and folder structure by clicking the Tag-Filename button and set
+ 
 `Format String = %albumartist%\%series%\%year% - %album%\%album% (%year%) - pt$num(%track%,2)`
