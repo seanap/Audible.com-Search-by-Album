@@ -22,7 +22,12 @@ This script will set the following tags:
 
 *Audible is really bad at providing this data
    
-Once you pull and set the tags, then make sure the track numbers are set/fixed by hitting `ctrl-k`
+## To Use:
+Pull and set the tags: 
+![alt text](https://i.imgur.com/AjJbUqE.png "Tag Source")
+Set/fix the track numbers by hitting `ctrl-k`
 
-Then set the filename and folder structure by clicking the Tag-Filename button and set
-   `Format String = %albumartist%\%series%\%year% - %album%\%album% (%year%) - pt$num(%track%,2)`  
+Then set the filename and folder structure by clicking the Tag-Filename button: 
+![alt text](https://i.imgur.com/KJGD4sE.png "Tag-Filename")
+
+`Format String = %albumartist%\%series%\%year% - %album%\%album% (%year%) - pt$num(%track%,2)`  
