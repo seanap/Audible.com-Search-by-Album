@@ -89,7 +89,10 @@ do
     findinline "Release date:"
 	sayuntil "<"
    
-    
+    # Language
+	findinline "languageLabel\">"
+	findinline "Language:"
+	sayuntil "<"
 
     
 	saynewline
