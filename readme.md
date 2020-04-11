@@ -2,8 +2,6 @@
 
 This is a modified custom web source for [mp3tag](https://www.mp3tag.de/en/).  The original authors are qudo, dano, and Romano https://community.mp3tag.de/t/ws-audible-albums-and-series/41227 This helps me make sure all audibooks are Tagged properly, have the correct filenames, and have the proper folder structure.  This ensures consistency across Plex/Prologue, Booksonic, and other Audiobook Players.
 
-Drop the `Audible.com#Search by Album.src` file in your `%appdata%\mp3tag\data\sources` folder
-
 This script will set the following tags:
 
 | mp3tag Tag    | Audible.com Value|
@@ -23,6 +21,8 @@ This script will set the following tags:
 *Audible is really bad at providing this data
    
 ## To Use:
+Drop the `Audible.com#Search by Album.src` file in your `%appdata%\mp3tag\data\sources` folder
+
 Pull and set the tags 
 ![alt text](https://i.imgur.com/AjJbUqE.png "Tag Source")
 
