@@ -144,12 +144,6 @@ unspace
 regexpreplace "  +" " "
 regexpreplace ".+By:" ""
 sayrest
-outputto "albumartist"
-regexpreplace "</?[^><]+>" ""
-unspace
-regexpreplace "  +" " "
-regexpreplace ".+By:" ""
-sayrest
 
 # narratorLabel
 outputto "Composer"
@@ -223,10 +217,14 @@ replace "_SL300_" "_SS500_"
 findinline "\"image\": \""
 sayuntil "\""
 
-#set "Albumsort"
+# Set "Albumsort"
 outputto "Albumsort"
 sayoutput "series"
 say " "
 sayoutput "series-part"
 say " - "
 sayoutput "album"
+
+# Set Artist = Albumartist
+outputto "albumartist"
+sayoutput "Artist"
