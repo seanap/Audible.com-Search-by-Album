@@ -209,6 +209,10 @@ outputto "Year"
 findinline "(P)"
 SayNChars 4
 
+# Publisher
+outputto "Publisher"
+sayuntil "<"
+
 # Cover
 outputto "Coverurl"
 findline "\"image\": \""
