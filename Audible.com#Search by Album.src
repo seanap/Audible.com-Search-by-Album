@@ -17,7 +17,7 @@
 [IndexUrl]=https://www.audible.com/search?keywords=
 [AlbumUrl]=https://www.audible.com
 [WordSeperator]=+
-[IndexFormat]=%_url%|%Album%|%Author%|%Duration%|%Year%
+[IndexFormat]=%_url%|%Album%|%Author%|%Duration%|%Year%|%Language%
 [SearchBy]=$regexp(%album%,'[- ]+cd ?\d+$',,1)
 [Encoding]=url-utf-8
 
@@ -88,14 +88,16 @@ do
     # Year
     findinline "Release date:"
 	sayuntil "<"
-   
-    
+	say "|"
 
-    
+	# Language
+	findinline "languageLabel\""
+	findinline "Language:"
+	sayuntil "<"
+	
 	saynewline
-	 
-   	findinline "<h3 class=\"bc-heading " 1 1
-    
+	findinline "<h3 class=\"bc-heading " 1 1
+
 while "bc-color-link" 99
 
 
