@@ -205,8 +205,14 @@ regexpreplace "  +" " "
 replace "bc-color-secondary\" >" ""
 sayrest
 
+# Copyright
+findline "©"
+outputto "Copyright"
+findinline "©"
+SkipChars "1234567890, "
+sayuntil "(P)"
+
 # Year
-findline "(P)"
 outputto "Year"
 findinline "(P)"
 SayNChars 4
