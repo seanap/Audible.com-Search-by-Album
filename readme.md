@@ -1,6 +1,8 @@
 # Audiobook Tag Scraper
 
-This is my modified custom web source for [mp3tag](https://www.mp3tag.de/en/).  The original authors are qudo, dano, and Romano https://community.mp3tag.de/t/ws-audible-albums-and-series/41227. This helps me make sure all audibooks are tagged properly, have the correct filenames, and have the proper folder structure.  This ensures consistency across Plex/Prologue, Booksonic, and other audiobook players.
+This is my modified custom web source for [mp3tag](https://www.mp3tag.de/en/).  The original authors are qudo, dano, and Romano https://community.mp3tag.de/t/ws-audible-albums-and-series/41227.
+
+This helps me make sure all audibooks are tagged properly, have the correct filenames, and have the proper folder structure.  This ensures consistency across Plex/Prologue, Booksonic, and other audiobook players.
 
 This script will set the following tags:
 
@@ -17,9 +19,9 @@ This script will set the following tags:
 | SERIES-PART** | Series Book #    |
 | ALBUMSORT     | %series% %series-part% - %album%|
 | PUBLISHER | Publisher |
+| COPYRIGHT | Copyright symbol
 | RATING WMP | Rating Label |
 | COVER         | Cover Art        |
-
    >&ast;*Audible is really bad at providing this data*  
    >&ast;&ast;*Create this tag Tools>Options>Tag Panel>New*  
 
