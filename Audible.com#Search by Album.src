@@ -132,8 +132,6 @@ else
 	gotoline 1
 endif
 
-
-
 # Author
 outputto "Artist"
 findline "authorLabel"
@@ -156,8 +154,6 @@ regexpreplace "  +" " "
 regexpreplace ".+Narrated by:" ""
 sayrest
 
-
-
 # Grouping / Series
 findline "seriesLabel" 1 1
 unspace
@@ -175,7 +171,6 @@ else
 	gotoline 1
 endif
 
-
 # Genres
 outputto "Genre"
 findline "categoriesLabel"
@@ -190,7 +185,14 @@ sayuntil "<"
 #findinline ">"
 #sayuntil "<"
 
-
+# Rating
+outputto "RATING WMP"
+findline "<span class=\"bc-text\" "
+joinuntil "</span>"
+findinline ">"
+sayuntil "<"
+outputto "RATING WINAMP"
+sayoutput "RATING WMP"
 
 # Description
 findline "Publisher's Summary</h2>"
@@ -208,6 +210,10 @@ findline "(P)"
 outputto "Year"
 findinline "(P)"
 SayNChars 4
+
+# Publisher
+outputto "Publisher"
+sayuntil "<"
 
 # Cover
 outputto "Coverurl"

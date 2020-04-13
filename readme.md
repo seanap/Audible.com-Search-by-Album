@@ -16,6 +16,8 @@ This script will set the following tags:
 | SERIES**      | Series           |
 | SERIES-PART** | Series Book #    |
 | ALBUMSORT     | %series% %series-part% - %album%|
+| PUBLISHER | Publisher |
+| RATING WMP | Rating Label |
 | COVER         | Cover Art        |
 
    >&ast;*Audible is really bad at providing this data*  
