@@ -19,8 +19,8 @@ This script will set the following tags:
 | SERIES-PART** | Series Book #    |
 | ALBUMSORT     | %series% %series-part% - %album%|
 | PUBLISHER | Publisher |
-| COPYRIGHT | Copyright symbol
-| RATING WMP | Rating Label |
+| COPYRIGHT | Copyright holder
+| RATING WMP | Audible Rating |
 | COVER         | Cover Art        |
    >&ast;*Audible is really bad at providing this data*  
    >&ast;&ast;*Create this tag Tools>Options>Tag Panel>New*  
