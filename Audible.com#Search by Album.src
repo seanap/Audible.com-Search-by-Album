@@ -243,12 +243,6 @@ sayoutput "album"
 outputto "albumartist"
 sayoutput "Artist"
 
-# Set Disknumber to <blank>
-# Can have odd effects in Plex when using embedded tags
+# Set Discnumber
 outputto "DISCNUMBER"
-say ""
-
-# Set Compliation to <blank>
-# Can have odd effects in Plex when using embedded tags
-outputto "COMPILATION"
-say ""
+sayoutput "series-part"
