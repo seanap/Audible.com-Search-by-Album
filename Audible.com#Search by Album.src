@@ -242,3 +242,13 @@ sayoutput "album"
 # Set Artist = Albumartist
 outputto "albumartist"
 sayoutput "Artist"
+
+# Set Disknumber to <blank>
+# Can have odd effects in Plex when using embedded tags
+outputto "DISCNUMBER"
+say ""
+
+# Set Compliation to <blank>
+# Can have odd effects in Plex when using embedded tags
+outputto "COMPILATION"
+say ""
