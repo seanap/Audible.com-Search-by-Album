@@ -169,7 +169,22 @@ if "seriesLabel"
 	findline "a>, "
 	findinline "a>, Book "
 	sayuntil "<"
+	outputto "Albumsort"
+	sayoutput "series"
+	say " "
+	sayoutput "series-part"
+	say " - "
+	sayoutput "album"
 else
+	IfnotOutput "Subtitle"
+		outputto "Albumsort"
+		sayoutput "album"
+	else
+		outputto "Albumsort"
+		sayoutput "album"
+		say " - "
+		sayoutput "Subtitle"
+	endif
 	gotoline 1
 endif
 
@@ -231,14 +246,6 @@ replace "_SL300_" "_SS500_"
 findinline "\"image\": \""
 sayuntil "\""
 
-# Set "Albumsort"
-outputto "Albumsort"
-sayoutput "series"
-say " "
-sayoutput "series-part"
-say " - "
-sayoutput "album"
-
 # Set Artist = Albumartist
 outputto "albumartist"
 sayoutput "Artist"
@@ -246,3 +253,8 @@ sayoutput "Artist"
 # Set Discnumber
 outputto "DISCNUMBER"
 sayoutput "series-part"
+
+# NOT WORKING
+# Set SERIES = Mood as a workaround for filtering collections in PLEX
+#outputto "MOOD"
+#sayoutput "series"
