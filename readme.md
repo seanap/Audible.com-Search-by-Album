@@ -27,9 +27,10 @@ This script will set the following tags:
 
 ## To Use:
 1. Drop the `Audible.com#Search by Album.src` file in your `%appdata%\mp3tag\data\sources` folder.
-2. Pull and set the tags
-![alt text](https://i.imgur.com/AjJbUqE.png "Tag Source")
+2. Load Audiobook files, and select all tracks `Ctrl-a`
 3. Set/fix the track numbers by hitting `ctrl-k`
+4. Pull and set the tags
+![alt text](https://i.imgur.com/AjJbUqE.png "Tag Source")
 4. Then set the filename and folder structure by clicking the Tag-Filename button
 ![alt text](https://i.imgur.com/KJGD4sE.png "Tag-Filename")  
    `Format String = C:\path\to\Audiobooks\%albumartist%\%series%\%year% - %album%\%album% (%year%) - pt$num(%track%,2)`  
