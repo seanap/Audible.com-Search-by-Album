@@ -17,7 +17,7 @@ This script will set the following tags:
 | COMMENT       | Publisher's Summary|
 | SERIES**      | Series           |
 | SERIES-PART** | Series Book #    |
-| ALBUMSORT     | %series% %series-part% - %album%|
+| ALBUMSORT     | If ALBUM only, then %Title%<br>If ALBUM and SUBTITLE, then %Title% - %Subtitle%<br>If Series, then %Series% %Series-part% - %Title%|
 | PUBLISHER | Publisher |
 | COPYRIGHT | Copyright holder
 | RATING WMP | Audible Rating |
