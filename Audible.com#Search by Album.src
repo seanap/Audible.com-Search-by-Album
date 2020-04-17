@@ -111,7 +111,7 @@ while "bc-color-link" 99
 # Asin
 findline "\"productAsin\" value=\""
 findinline "\"productAsin\" value=\""
-outputto "ISRC"
+outputto "ASIN"
 sayuntil "\""
 gotoline 1
 
