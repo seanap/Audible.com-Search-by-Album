@@ -8,22 +8,24 @@ This script will set the following tags:
 
 | mp3tag Tag    | Audible.com Value|
 | ------------- | ---------------- |
-| ALBUM         | Title            |
-| SUBTITLE      | Subtitle         |
-| ARTIST        | Author           |
-| ALBUMARTIST   | Author           |
-| COMPOSER      | Narrator         |
-| YEAR          | Original Year*   |
-| COMMENT       | Publisher's Summary|
-| SERIES**      | Series           |
-| SERIES-PART** | Series Book #    |
-| ALBUMSORT     | If ALBUM only, then %Title%<br>If ALBUM and SUBTITLE, then %Title% - %Subtitle%<br>If Series, then %Series% %Series-part% - %Title%|
-| PUBLISHER | Publisher |
-| COPYRIGHT | Copyright holder
-| RATING WMP | Audible Rating |
-| COVER         | Cover Art        |
+| `TIT1` (CONTENTGROUP)  | Series, Book #   |
+| `TIT2` (ALBUM)         | Title            |
+| `TIT3` (SUBTITLE)      | Subtitle         |
+| `TPE1` (ARTIST)        | Author           |
+| `TPE2` (ALBUMARTIST)   | Author           |
+| `TCOM` (COMPOSER)      | Narrator         |
+| `TYER` (YEAR)          | Original Year*   |
+| `COMM` (COMMENT)       | Publisher's Summary|
+| `TSOA` (ALBUMSORT)     | If ALBUM only, then %Title%<br>If ALBUM and SUBTITLE, then %Title% - %Subtitle%<br>If Series, then %Series% %Series-part% - %Title%|
+| `TPUB` (PUBLISHER) | Publisher |
+| `TCOP` (COPYRIGHT) | Copyright holder
+| `POPM` (RATING WMP<br>RATING WINAMP) | Audible Rating |
+| `WOAS` (WWWAUDIOSOURCE) | Audible Album URL
+| COVER         | Album Cover Art        |
+| `TXXX` (SERIES)**      | Series           |
+| `TXXX` (SERIES-PART)** | Series Book #    |
    >&ast;*Audible is really bad at providing this data*  
-   >&ast;&ast;*Create this tag Tools>Options>Tag Panel>New*  
+   >&ast;&ast;*Custum Tag, Create this tag Tools>Options>Tag Panel>New*  
 
 ## To Use:
 1. Drop the `Audible.com#Search by Album.src` file in your `%appdata%\mp3tag\data\sources` folder.
