@@ -16,12 +16,13 @@ This script will set the following tags:
 | `TCOM` (COMPOSER)      | Narrator         |
 | `TYER` (YEAR)          | Original Year*   |
 | `COMM` (COMMENT)       | Publisher's Summary|
-| `TSOA` (ALBUMSORT)     | If ALBUM only, then %Title%<br>If ALBUM and SUBTITLE, then %Title% - %Subtitle%<br>If Series, then %Series% %Series-part% - %Title%|
-| `TPUB` (PUBLISHER) | Publisher |
-| `TCOP` (COPYRIGHT) | Copyright holder
+| `TSOA` (ALBUMSORT)     | If ALBUM only, then %Title%<br>If ALBUM and SUBTITLE, then %Title% - %Subtitle%<br>If Series, then %Series% %Series-part% - %Title%  |
+| `TPUB` (PUBLISHER)     | Publisher        |
+| `TCOP` (COPYRIGHT)     | Copyright holder |
+| `ASIN` (ASIN) | Amazon Standard Identification Number |
 | `POPM` (RATING WMP<br>RATING WINAMP) | Audible Rating |
-| `WOAS` (WWWAUDIOSOURCE) | Audible Album URL
-| COVER         | Album Cover Art        |
+| `WOAS` (WWWAUDIOSOURCE) | Audible Album URL |
+| CoverUrl               | Album Cover Art  |
 | `TXXX` (SERIES)**      | Series           |
 | `TXXX` (SERIES-PART)** | Series Book #    |
    >&ast;*Audible is really bad at providing this data*  
