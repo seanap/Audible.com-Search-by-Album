@@ -6,7 +6,7 @@
 # 2020-03-24: Updated
 # 2020-04-06: Updated to Audible.com
 #
-# This file should be in your sources dir. 
+# This file should be in your sources dir. %appdata%\roaming\mp3tag\data\sources
 # On Windows XP it's C:\Documents and Settings\*username*\Application Data\Mp3tag\data\sources
 #
 #
@@ -26,8 +26,8 @@
 # ###################################################################
 #					I  N  D  E  X
 # ###################################################################
-#DebugWriteInput "C:\Users\x\Desktop\mp3tag.html"
-#Debug "ON" "C:\Users\x\Desktop\mp3tagdebug.txt"
+#DebugWriteInput "C:\Users\*username*\Desktop\mp3tag.html"
+#Debug "ON" "C:\Users\*username*\Desktop\mp3tagdebug.txt"
 
 
 
@@ -111,7 +111,7 @@ while "bc-color-link" 99
 # Asin
 findline "\"productAsin\" value=\""
 findinline "\"productAsin\" value=\""
-outputto "Asin"
+outputto "ISRC"
 sayuntil "\""
 gotoline 1
 
@@ -175,6 +175,10 @@ if "seriesLabel"
 	sayoutput "series-part"
 	say " - "
 	sayoutput "album"
+	outputto "CONTENTGROUP"
+	sayoutput "series"
+	say ", Book #"
+	sayoutput "series-part"
 else
 	IfnotOutput "Subtitle"
 		outputto "Albumsort"
@@ -182,7 +186,7 @@ else
 	else
 		outputto "Albumsort"
 		sayoutput "album"
-		say " - "
+		say ": "
 		sayoutput "Subtitle"
 	endif
 	gotoline 1
@@ -250,9 +254,22 @@ sayuntil "\""
 outputto "albumartist"
 sayoutput "Artist"
 
+# Set Audible Album URL
+outputto "WWWAUDIOSOURCE"
+sayoutput "CurrentUrl"
+
+# Experimental Tag Shoehorn
+# Set Series as Movement
+#outputto "MOVEMENTNAME"
+#sayoutput "Series"
+
+# Set Series # as Movement #
+#outputto "MOVEMENT"
+#sayoutput "series-part"
+
 # Set Discnumber
-outputto "DISCNUMBER"
-sayoutput "series-part"
+#outputto "DISCNUMBER"
+#sayoutput "series-part"
 
 # NOT WORKING
 # Set SERIES = Mood as a workaround for filtering collections in PLEX
