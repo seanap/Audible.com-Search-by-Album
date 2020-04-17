@@ -253,7 +253,7 @@ outputto "albumartist"
 sayoutput "Artist"
 
 # Set Audible Album URL
-outputto "WWWAUDIOSOURCE"
+outputto "WWWAUDIOFILE"
 sayoutput "CurrentUrl"
 
 # Experimental Tag Shoehorn
