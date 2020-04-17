@@ -212,8 +212,6 @@ findline "<span class=\"bc-text\" "
 joinuntil "</span>"
 findinline ">"
 sayuntil "<"
-outputto "RATING WINAMP"
-sayoutput "RATING WMP"
 
 # Description
 findline "Publisher's Summary</h2>"

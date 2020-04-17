@@ -19,7 +19,7 @@ This script will set the following tags:
 | `TSOA` (ALBUMSORT)     | If ALBUM only, then %Title%<br>If ALBUM and SUBTITLE, then %Title% - %Subtitle%<br>If Series, then %Series% %Series-part% - %Title%|
 | `TPUB` (PUBLISHER) | Publisher |
 | `TCOP` (COPYRIGHT) | Copyright holder
-| `POPM` (RATING WMP<br>RATING WINAMP) | Audible Rating |
+| `POPM` (RATING WMP) | Audible Rating |
 | `WOAS` (WWWAUDIOSOURCE) | Audible Album URL
 | COVER         | Album Cover Art        |
 | `TXXX` (SERIES)**      | Series           |
