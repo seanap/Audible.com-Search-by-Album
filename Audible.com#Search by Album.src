@@ -135,7 +135,7 @@ else
 endif
 
 # Author
-outputto "Artist"
+outputto "Albumartist"
 findline "authorLabel"
 moveline 1 1
 joinuntil "</span>"
@@ -224,20 +224,24 @@ regexpreplace "  +" " "
 replace "bc-color-secondary\" >" ""
 sayrest
 
-# Copyright
+# © Year, the closest we can get to Original Pub year, Audible is not consistent with dates
 findline "©"
-outputto "Copyright"
 findinline "©"
-SkipChars "1234567890, "
-sayuntil "(P)"
-
-# Year
 outputto "Year"
-findinline "(P)"
 SayNChars 4
+gotoline 1
 
-# Publisher
+# ©, Release Year, Publisher
+findline "©"
+replace "(P)" "; "
+findinline "©"
+outputto "Copyright"
+sayuntil ";"
+movechar 2
+outputto "RELEASETIME"
+SayNChars 4
 outputto "Publisher"
+movechar 1
 sayuntil "<"
 
 # Cover
@@ -248,13 +252,19 @@ replace "_SL300_" "_SS500_"
 findinline "\"image\": \""
 sayuntil "\""
 
-# Set Artist = Albumartist
-outputto "albumartist"
-sayoutput "Artist"
+# Set Artist = artist
+outputto "artist"
+sayoutput "Albumartist"
+say ", "
+sayoutput "Composer"
 
 # Set Audible Album URL
 outputto "WWWAUDIOFILE"
 sayoutput "CurrentUrl"
+
+# Set Comment to DESCRIPTION for better MP4 support
+outputto "DESCRIPTION"
+sayoutput "Comment"
 
 # Experimental Tag Shoehorn
 # Set Series as Movement
