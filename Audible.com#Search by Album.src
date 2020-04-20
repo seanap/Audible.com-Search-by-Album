@@ -115,12 +115,28 @@ outputto "ASIN"
 sayuntil "\""
 gotoline 1
 
-# Album
-outputto "Album"
+# Set Album and correct Audible quirks
 findline "<h1  class=\"bc-heading"
 joinuntil "authorLabel"
 findinline ">"
-sayuntil "<"
+findinline ":" 1 1
+movechar -1
+if ":"
+	findline "<h1  class=\"bc-heading"
+	joinuntil "authorLabel"
+	findinline ">"
+	outputto "Album"
+	sayuntil ":"
+	outputto "subtitle"
+	movechar 2
+	sayuntil "<"
+else
+	findline "<h1  class=\"bc-heading"
+	joinuntil "authorLabel"
+	findinline ">"
+	outputto "Album"
+	sayuntil "<"
+endif
 
 # Subtitle of Album
 regexpreplace "  +" " "
@@ -166,9 +182,10 @@ if "seriesLabel"
 	findinline ">"
 	sayuntil "<"
 	outputto "series-part"
-	findline "a>, "
+#	findline "a>, "
 	findinline "a>, Book "
-	sayuntil "<"
+	SayRegexp "^\d+$"
+#	sayuntil "<"
 	outputto "Albumsort"
 	sayoutput "series"
 	say " "
