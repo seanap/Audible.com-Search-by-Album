@@ -130,7 +130,7 @@ if ":"
 	outputto "subtitle"
 	movechar 2
 	sayuntil "<"
-else
+else	
 	findline "<h1  class=\"bc-heading"
 	joinuntil "authorLabel"
 	findinline ">"
@@ -178,12 +178,11 @@ unspace
 if "seriesLabel"
 	outputto "SERIES"
 	findline "href="
-	findline ">"
 	findinline ">"
 	sayuntil "<"
 	outputto "series-part"
 	findinline "a>, Book "
-	SayRegexp "^\d+$"
+	SayRegexp "^\d+"
 	outputto "Albumsort"
 	sayoutput "series"
 	say " "
