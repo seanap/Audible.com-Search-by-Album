@@ -14,17 +14,18 @@ This script will set the following tags:
 | `TPE1` (ARTIST)        | Author, Narrator |
 | `TPE2` (ALBUMARTIST)   | Author           |
 | `TCOM` (COMPOSER)      | Narrator         |
-| `TYER` (YEAR)          | Copyright Year*   |
-| `COMM` (COMMENT)       | Publisher's Summary|
-| `TSOA` (ALBUMSORT)     | If ALBUM only, then %Title%<br>If ALBUM and SUBTITLE, then %Title% - %Subtitle%<br>If Series, then %Series% %Series-part% - %Title%|
-| `TDRL` (RELEASETIME) | Audiobook Release Year |
-| `TPUB` (PUBLISHER) | Publisher |
-| `TCOP` (COPYRIGHT) | Copyright
-| `ASIN` (ASIN) | Amazon Standard Identification Number |
-| `POPM` (RATING WMP) | Audible Rating |
-| `WOAF` (WWWAUDIOFILE) | Audible Album URL
-| `CoverUrl`        | Album Cover Art        |
-| `desc` (DESCRIPTION) | MP4 Description tag |
+| `TCON` (GENRE)         | Genre1/Genre2    |
+| `TYER` (YEAR)          | Copyright Year*  |
+| `COMM` (COMMENT)       | Publisher's Summary (MP3) |
+| `desc` (DESCRIPTION)   | Publisher's Summary (M4B) |
+| `TSOA` (ALBUMSORT)     | If ALBUM only, then %Title%<br>If ALBUM and SUBTITLE, then %Title% - %Subtitle%<br>If Series, then %Series% %Series-part% - %Title% |
+| `TDRL` (RELEASETIME)   | Audiobook Release Year |
+| `TPUB` (PUBLISHER)     | Publisher        |
+| `TCOP` (COPYRIGHT)     | Copyright        |
+| `ASIN` (ASIN)          | Amazon Standard Identification Number |
+| `POPM` (RATING WMP)    | Audible Rating   |
+| `WOAF` (WWWAUDIOFILE)  | Audible Album URL|
+| `CoverUrl`             | Album Cover Art  |
 | `TXXX` (SERIES)**      | Series           |
 | `TXXX` (SERIES-PART)** | Series Book #    |
    >&ast;*I would prefer Original Pub. year, but Audible is really bad at providing this data*  
