@@ -215,17 +215,20 @@ findinline ">"
 sayuntil "<"
 
 # 2nd Genre
-outputto "tmp_Genre2"
-findinline "href="
-findinline ">"
-sayuntil "<"
-
-# Combine both Genre's
-outputto "genre"
-sayoutput "tmp_Genre1"
-say "/"
-sayoutput "tmp_Genre2"
-
+findinline "href=" 1 1
+movechar -1
+if "="
+	findinline ">"
+	outputto "tmp_Genre2"
+	sayuntil "<"
+	outputto "genre"
+	sayoutput "tmp_Genre1"
+	say "/"
+	sayoutput "tmp_Genre2"
+else
+	outputto "genre"
+	sayoutput "tmp_Genre1"
+endif
 
 # Rating
 findline "ratingsLabel"
