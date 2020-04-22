@@ -181,7 +181,7 @@ if "seriesLabel"
 	findinline ">"
 	sayuntil "<"
 	outputto "series-part"
-	findinline "a>, Book "
+	findinline "a>, Book " 1 1
 	SayRegexp "^\d+"
 	outputto "Albumsort"
 	sayoutput "series"
