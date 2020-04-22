@@ -18,7 +18,7 @@
 [AlbumUrl]=https://www.audible.com
 [WordSeperator]=+
 [IndexFormat]=%_url%|%Album%|%Author%|%Duration%|%Year%|%Language%
-[SearchBy]=$regexp(%album%,'[- ]+cd ?\d+$',,1)
+[SearchBy]=%artist% $regexp(%album%,'[- ]+cd ?\d+$',,1)
 [Encoding]=url-utf-8
 
 
