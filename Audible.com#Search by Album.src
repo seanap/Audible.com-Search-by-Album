@@ -126,6 +126,9 @@ if ":"
 	joinuntil "authorLabel"
 	findinline ">"
 	outputto "Album"
+	regexpreplace "</?[^><]+>" ""
+	unspace
+	regexpreplace "  +" " "
 	sayuntil ":"
 	outputto "subtitle"
 	movechar 2
@@ -133,7 +136,7 @@ if ":"
 else	
 	findline "<h1  class=\"bc-heading"
 	joinuntil "authorLabel"
-	findinline ">"
+	findinline ">" 1 1
 	outputto "Album"
 	sayuntil "<"
 endif
@@ -145,7 +148,7 @@ findinline "bc-text bc-size-medium\" " 1 1
 if ">"
 	movechar 1
 	outputto "Subtitle"
-	sayuntil "</"
+	sayuntil "<"
 else
 	gotoline 1
 endif
@@ -253,25 +256,38 @@ regexpreplace "  +" " "
 replace "bc-color-secondary\" >" ""
 sayrest
 
-# © Year, the closest we can get to Original Pub year, Audible is not consistent with dates
-findline "©"
-findinline "©"
-outputto "Year"
-SayNChars 4
-gotoline 1
-
-# ©, Release Year, Publisher
-findline "©"
-replace "(P)" "; "
-findinline "©"
-outputto "Copyright"
-sayuntil ";"
-movechar 2
-outputto "RELEASETIME"
-SayNChars 4
-outputto "Publisher"
-movechar 1
-sayuntil "<"
+# © Year, ©, Release Year, Publisher, the closest we can get to Original Pub year, Audible is not consistent with dates
+findline "(P)"
+findinline "(P)" 1 1
+movechar -17
+if "Public Domain"
+	outputto "Copyright"
+	say "Public Domain"
+	outputto "year"
+	findinline "(P)"
+	SayNChars 4
+	outputto "Publisher"
+	movechar 1
+	sayuntil "<"
+else
+	gotoline 1
+	findline "©"
+	findinline "©"
+	outputto "Year"
+	SayNChars 4
+	gotoline 1
+	findline "©"
+	replace "(P)" "; "
+	findinline "©"
+	outputto "Copyright"
+	sayuntil ";"
+	movechar 2
+	outputto "RELEASETIME"
+	SayNChars 4
+	outputto "Publisher"
+	movechar 1
+	sayuntil "<"
+endif
 
 # Cover
 outputto "Coverurl"
