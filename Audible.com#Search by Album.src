@@ -196,6 +196,11 @@ if "seriesLabel"
 	sayoutput "series"
 	say ", Book #"
 	sayoutput "series-part"
+	IfnotOutput "Subtitle"
+		outputto "subtitle"
+		sayoutput "CONTENTGROUP"
+	else
+	endif
 else
 	IfnotOutput "Subtitle"
 		outputto "Albumsort"
@@ -257,7 +262,9 @@ replace "bc-color-secondary\" >" ""
 sayrest
 
 # © Year, ©, Release Year, Publisher, the closest we can get to Original Pub year, Audible is not consistent with dates
-findline "(P)"
+findline "</div>"
+joinuntil "</span>"
+#findline "(P)"
 findinline "(P)" 1 1
 movechar -17
 if "Public Domain"
