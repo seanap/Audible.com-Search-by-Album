@@ -185,7 +185,7 @@ if "seriesLabel"
 	sayuntil "<"
 	outputto "series-part"
 	findinline "a>, Book " 1 1
-	SayRegexp "^\d+"
+	SayRegexp "^[.?\d]+$"
 	outputto "Albumsort"
 	sayoutput "series"
 	say " "
@@ -304,11 +304,13 @@ replace "_SL300_" "_SS500_"
 findinline "\"image\": \""
 sayuntil "\""
 
-# Set Artist = artist
+# Set Artist = artist, narrator
 outputto "artist"
 sayoutput "Albumartist"
 say ", "
 sayoutput "Composer"
+
+#%artist%=regexp(%artist%,(\b\w+\b)(?=[\s\S]*\b\1\b).+, )
 
 # Set Audible Album URL
 outputto "WWWAUDIOFILE"
