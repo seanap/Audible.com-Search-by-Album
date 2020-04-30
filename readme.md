@@ -9,7 +9,7 @@ This script will set the following tags:
 | mp3tag Tag    | Audible.com Value|
 | ------------- | ---------------- |
 | `TIT1` (CONTENTGROUP)  | Series, Book #   |
-| `TIT2` (ALBUM)         | Title            |
+| `TALB` (ALBUM)         | Title            |
 | `TIT3` (SUBTITLE)      | Subtitle         |
 | `TPE1` (ARTIST)        | Author, Narrator |
 | `TPE2` (ALBUMARTIST)   | Author           |
@@ -28,6 +28,7 @@ This script will set the following tags:
 | `CoverUrl`             | Album Cover Art  |
 | `TXXX` (SERIES)**      | Series           |
 | `TXXX` (SERIES-PART)** | Series Book #    |
+| `TIT2` (TITLE)         | Not Scraped, but used for Chapter Title<br>If no chapter data available set to filename |
    >&ast;*I would prefer Original Pub. year, but Audible is really bad at providing this data*  
    >&ast;&ast;*Custom Tags used as placeholders, To view this tag Tools>Options>Tag Panel>New*  
 
