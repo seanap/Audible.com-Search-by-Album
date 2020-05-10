@@ -106,8 +106,6 @@ while "bc-color-link" 99
 #					A  L  B  U  M
 # ###################################################################
 
-
-
 # Asin
 findline "\"productAsin\" value=\""
 findinline "\"productAsin\" value=\""
@@ -185,7 +183,7 @@ if "seriesLabel"
 	sayuntil "<"
 	outputto "series-part"
 	findinline "a>, Book " 1 1
-	SayRegexp "^[.?\d]+$"
+	SayRegexp "^[.?\d]+(?=,|$)"
 	outputto "Albumsort"
 	sayoutput "series"
 	say " "
