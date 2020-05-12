@@ -26,10 +26,8 @@
 # ###################################################################
 #					I  N  D  E  X
 # ###################################################################
-DebugWriteInput #"C:\Users\%user%\Desktop\mp3tag.html"
-Debug "ON" #"C:\Users\%user%\Desktop\mp3tagdebug.txt"
-
-
+#DebugWriteInput #"C:\Users\%user%\Desktop\mp3tag.html"
+#Debug "ON" #"C:\Users\%user%\Desktop\mp3tagdebug.txt"
 
 joinuntil "</html>"
 regexpreplace "[\r\n]+" ""
