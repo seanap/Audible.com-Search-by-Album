@@ -40,4 +40,4 @@ This script will set the following tags:
    ![alt text](https://i.imgur.com/Q4ySYh2.png "Web Source Select")
 4. Then set the filename and folder structure by clicking the Tag-Filename button
 ![alt text](https://i.imgur.com/KJGD4sE.png "Tag-Filename")  
-   `Format String = C:\path\to\Audiobooks\%albumartist%\%series%\%year% - %album%\%album% (%year%) '['%series% %series-part%']'- pt$num(%track%,2)`  
+   `Format String = C:\path\to\Audiobooks\%albumartist%\%series%\%year% - %album%[ '['%series% %series-part%']']\%album% (%year%) ['['%series% %series-part%']' ]- pt$num(%track%,2)`  
