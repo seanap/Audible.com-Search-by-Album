@@ -2,7 +2,7 @@
 
 This is my modified custom web source for [mp3tag](https://www.mp3tag.de/en/).  The original authors are qudo, dano, and Romano https://community.mp3tag.de/t/ws-audible-albums-and-series/41227.
 
-This script makes quick work of ensuring all audiobooks are tagged properly, have the correct filenames, and have the proper folder structure.  This ensures consistency across Plex/Prologue, Booksonic, and other audiobook players.
+This script makes quick work of ensuring all audiobooks are tagged properly, have the correct filenames, and have the proper folder structure.  This ensures consistency across Plex/Prologue, Booksonic, and other audiobook players.  This is a part of a larger guide on setting up audiobooks on Plex and Booksonic https://github.com/seanap/Plex-Audiobook-Guide
 
 This script will set the following tags:
 
@@ -25,12 +25,18 @@ This script will set the following tags:
 | `ASIN` (ASIN)          | Amazon Standard Identification Number |
 | `POPM` (RATING WMP)    | Audible Rating   |
 | `WOAF` (WWWAUDIOFILE)  | Audible Album URL|
+| `stik` (ITUNESMEDIATYPE) | M4B Media type = Audiobook |
+| `pgap` (ITUNESGAPLESS) | M4B Gapless album = 1 |
 | `CoverUrl`             | Album Cover Art  |
+| `MVNM` MOVEMENTNAME    | Series           |
+| `MVIN` MOVEMENT        | Series Book #    |
 | `TXXX` (SERIES)**      | Series           |
 | `TXXX` (SERIES-PART)** | Series Book #    |
+| `TXXX` (TMP_GENRE1) | Genre 1 |
+| `TXXX` (TMP_GENRE2) | Genre 2 |
 | `TIT2` (TITLE)         | Not Scraped, but used for Chapter Title<br>If no chapter data available set to filename |
    >&ast;*I would prefer Original Pub. year, but Audible is really bad at providing this data*  
-   >&ast;&ast;*Custom Tags used as placeholders, To view this tag Tools>Options>Tag Panel>New*  
+   >&ast;&ast;*Custom Tags used as placeholders, To view this tag Tools>Options>Tag Panel>New* 
 
 ## To Use:
 1. Drop the `Audible.com#Search by Album.src` file in your `%appdata%\mp3tag\data\sources` folder.
