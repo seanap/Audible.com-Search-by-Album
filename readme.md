@@ -27,16 +27,17 @@ This script will set the following tags:
 | `WOAF` (WWWAUDIOFILE)  | Audible Album URL|
 | `stik` (ITUNESMEDIATYPE) | M4B Media type = Audiobook |
 | `pgap` (ITUNESGAPLESS) | M4B Gapless album = 1 |
-| `CoverUrl`             | Album Cover Art  |
+| 'shwm' SHOWMOVEMENT    | Show Movement (M4B) |
 | `MVNM` MOVEMENTNAME    | Series           |
 | `MVIN` MOVEMENT        | Series Book #    |
 | `TXXX` (SERIES)**      | Series           |
 | `TXXX` (SERIES-PART)** | Series Book #    |
-| `TXXX` (TMP_GENRE1) | Genre 1 |
-| `TXXX` (TMP_GENRE2) | Genre 2 |
+| `TXXX` (TMP_GENRE1)    | Genre 1 |
+| `TXXX` (TMP_GENRE2)    | Genre 2 |
+| `CoverUrl`             | Album Cover Art  |
 | `TIT2` (TITLE)         | Not Scraped, but used for Chapter Title<br>If no chapter data available set to filename |
    >&ast;*I would prefer Original Pub. year, but Audible is really bad at providing this data*  
-   >&ast;&ast;*Custom Tags used as placeholders, To view this tag Tools>Options>Tag Panel>New* 
+   >&ast;&ast;*Custom Tags used as placeholders, To view this tag Tools>Options>Tag Panel>New*
 
 ## To Use:
 1. Drop the `Audible.com#Search by Album.src` file in your `%appdata%\mp3tag\data\sources` folder.
