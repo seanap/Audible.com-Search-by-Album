@@ -27,8 +27,8 @@
 # ###################################################################
 #					I  N  D  E  X
 # ###################################################################
-#DebugWriteInput #"C:\Users\%user%\Desktop\mp3tag.html"
-#Debug "ON" #"C:\Users\%user%\Desktop\mp3tagdebug.txt"
+#DebugWriteInput "C:\Users\%user%\Desktop\mp3tag.html"
+#Debug "ON" "C:\Users\%user%\Desktop\mp3tagdebug.txt"
 
 joinuntil "</html>"
 regexpreplace "[\r\n]+" ""
@@ -109,8 +109,8 @@ while "bc-color-link" 99
 
 
 # Asin
-findline "\"productAsin\" value=\""
-findinline "\"productAsin\" value=\""
+findline "<input type=\"hidden\" name=\"asin\" value=\""
+findinline "<input type=\"hidden\" name=\"asin\" value=\""
 outputto "ASIN"
 sayuntil "\""
 gotoline 1
