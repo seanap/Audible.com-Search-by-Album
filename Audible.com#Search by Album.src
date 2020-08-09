@@ -339,6 +339,10 @@ else
 	sayuntil "<"
 endif
 
+# Set Title
+outputto "title"
+sayoutput "album"
+
 # Set Discnumber
 #outputto "DISCNUMBER"
 #sayoutput "series-part"
