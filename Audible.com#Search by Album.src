@@ -28,19 +28,18 @@
 # ###################################################################
 #					I  N  D  E  X
 # ###################################################################
-#DebugWriteInput #"C:\Users\%user%\Desktop\mp3tag.html"
-#Debug "ON" #"C:\Users\%user%\Desktop\mp3tagdebug.txt"
+#DebugWriteInput "C:\Users\%user%\Desktop\mp3tag.html"
+#Debug "ON" "C:\Users\%user%\Desktop\mp3tagdebug.txt"
 
-joinuntil "</html>"
-regexpreplace "[\r\n]+" ""
-regexpreplace ".+results" "results"
-regexpreplace "<script asyn.+" ""
+#Only select the area we need instead of everyting.
+findline "<ul  class=\"bc-list"
+joinuntil "center-4"
+
 regexpreplace "\s\s+" " "
 regexpreplace "\t+" " "
 replace "\" >" "\">"
 replace "> <" "><"
 replace "Running Time:" ""
-
 
 findinline "results"
 findinline "<h3 class=\"bc-heading"
