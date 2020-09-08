@@ -44,33 +44,33 @@ replace "Running Time:" ""
 findinline "results"
 findinline "<h3 class=\"bc-heading"
 
-do	
-	#  Url		
+do
+	#  Url
 	findinline "href=\""
 	sayuntil "?"
 	say "?ipRedirectOverride=true&overrideBaseCountry"
 	say "|"
-	
+
 	# Album
 	findinline ">"
 	sayuntil "<"
-	
+
 	findinline "</li>"
 	if "<li class=\"bc-list-item subtitle"
 		say " - "
 		findinline "bc-color-secondary\">"
 		sayuntil "<"
-		
+
 	else
 		if  "<li class=\"bc-list-item bc"
 			say " - "
 			findinline ">"
 			sayuntil "<"
 		endif
-	
+
 	endif
-	say "|" 
-	
+	say "|"
+
 	#Author
 	findinline "authorLabel\">"
 	findinline "href="
@@ -78,13 +78,13 @@ do
 	sayuntil "<"
 	say "|"
 
-	
+
     # Duration
     findinline "runtimeLabel\">"
     findinline "bc-color-secondary\">"
     sayuntil "<"
     say "|"
-	
+
     # Year
     findinline "Release date:"
 	sayuntil "<"
@@ -94,7 +94,7 @@ do
 	findinline "languageLabel\""
 	findinline "Language:"
 	sayuntil "<"
-	
+
 	saynewline
 	findinline "<h3 class=\"bc-heading " 1 1
 
@@ -140,7 +140,7 @@ if ":"
 	outputto "subtitle"
 	movechar 2
 	sayuntil "<"
-else	
+else
 	findline "<h1  class=\"bc-heading"
 	joinuntil "authorLabel"
 	findinline ">" 1 1
