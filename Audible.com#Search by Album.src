@@ -223,27 +223,32 @@ else
 endif
 
 # 1st Genre
-outputto "tmp_Genre1"
-findline "categoriesLabel"
-joinuntil "</span>"
-findinline "href="
-findinline ">"
-sayuntil "<"
-
-# 2nd Genre
-findinline "href=" 1 1
-movechar -1
-if "="
+findline "categoriesLabel" 1 1
+unspace
+if "categoriesLabel"
+	outputto "tmp_Genre1"
+	findinline "categoriesLabel" 1 1
+	joinuntil "</span>"
+	findinline "href="
 	findinline ">"
-	outputto "tmp_Genre2"
 	sayuntil "<"
-	outputto "genre"
-	sayoutput "tmp_Genre1"
-	say "/"
-	sayoutput "tmp_Genre2"
+	# 2nd Genre
+	findinline "href=" 1 1
+	movechar -1
+	if "="
+		findinline ">"
+		outputto "tmp_Genre2"
+		sayuntil "<"
+		outputto "genre"
+		sayoutput "tmp_Genre1"
+		say "/"
+		sayoutput "tmp_Genre2"
+	else
+		outputto "genre"
+		sayoutput "tmp_Genre1"
+	endif
 else
-	outputto "genre"
-	sayoutput "tmp_Genre1"
+	gotoline 1
 endif
 
 # Rating
