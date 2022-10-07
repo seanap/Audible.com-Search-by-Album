@@ -173,17 +173,11 @@ sayrest
 # narratorLabel
 outputto "Composer"
 findline "narratorLabel" 1 1
-if "narratorLabel"
-	moveline 3 1
-	joinuntil "</li>"
-	regexpreplace "</?[^><]+>" ""
-	unspace
-	regexpreplace "  +" " "
-	regexpreplace ".+Narrated by:" ""
-	sayrest
-else
-	gotoline 1
-endif
+unspace
+findline "href="
+findinline ">"
+sayuntil "<"
+gotoline 1
 
 # Grouping / Series
 findline "seriesLabel" 1 1
