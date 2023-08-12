@@ -8,6 +8,7 @@
 # 2020-06-28: Updated to region independent (u/Carlyone)
 # 2020-08-05: Updated
 # 2021-10-15: Updated to support Audible.co.jp (u/MrPiethon) 
+# 2023-08-11: Updated (u/d-e-x-x)
 #
 # This file should be in your sources dir. %appdata%\roaming\mp3tag\data\sources
 # On Windows XP it's C:\Documents and Settings\*username*\Application Data\Mp3tag\data\sources
@@ -33,7 +34,7 @@
 #Debug "ON" "C:\Users\%user%\Desktop\mp3tagdebug.txt"
 
 #Only select the area we need instead of everyting.
-findline "center-3"
+findline "<ul  class=\"bc-list"
 joinuntil "center-4"
 
 regexpreplace "\s\s+" " "
@@ -42,7 +43,7 @@ replace "\" >" "\">"
 replace "> <" "><"
 replace "Running Time:" ""
 
-findinline "results"
+findinline "bc-spacing-micro"
 findinline "<h3 class=\"bc-heading"
 
 do
@@ -116,8 +117,8 @@ sayuntil "\""
 gotoline 1
 
 # Asin
-findline "<input type=\"hidden\" name=\"asin\" value=\""
-findinline "<input type=\"hidden\" name=\"asin\" value=\""
+findline "<input type=\"hidden\" id=\"reviewsAsinUS\" value=\""
+findinline "<input type=\"hidden\" id=\"reviewsAsinUS\" value=\""
 outputto "ASIN"
 sayuntil "\""
 gotoline 1
