@@ -294,7 +294,7 @@ else
 	findline ", \"description\": \"" 1 1
 	unspace
 	if ", \"description\": \""
-		outputto "Description"
+		outputto "Comment"
 		findinline ", \"description\": \""
 		unspace
 		joinuntil ", \"image"
