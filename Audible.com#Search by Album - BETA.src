@@ -32,7 +32,7 @@
 #DebugWriteInput "C:\Users\%user%\Desktop\mp3tag.html"
 #Debug "ON" "C:\Users\%user%\Desktop\mp3tagdebug.txt"
 
-#Only select the area we need instead of everyting.
+#Only select the area we need instead of everything.
 findline "<ul  class=\"bc-list"
 joinuntil "center-4"
 
@@ -116,8 +116,8 @@ sayuntil "\""
 gotoline 1
 
 # Asin
-findline "<input type=\"hidden\" id=\"reviewsAsinUS\" value=\""
-findinline "<input type=\"hidden\" id=\"reviewsAsinUS\" value=\""
+findline "<input type=\"hidden\" name=\"asin\" value=\""
+findinline "<input type=\"hidden\" name=\"asin\" value=\""
 outputto "ASIN"
 sayuntil "\""
 gotoline 1
@@ -457,4 +457,18 @@ endif
 outputto "AUDIBLE_ALBUMARTISTID"
 findline "product:[{"
 findinline "\"id\":\""
+sayuntil "\""
+
+# Duration
+outputto "DURATION"
+gotoline 1
+findline "\"duration\": \""
+findinline "\"duration\": \"PT"
+sayuntil "\""
+
+# Date Published
+outputto "DATE_PUBLISHED"
+gotoline 1
+findline "\"datePublished\": \""
+findinline "\"datePublished\": \""
 sayuntil "\""
