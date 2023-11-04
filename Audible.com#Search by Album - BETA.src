@@ -8,6 +8,7 @@
 # 2020-06-28: Updated to region independent (u/Carlyone)
 # 2020-08-05: Updated
 # 2023-08-11: Updated (u/d-e-x-x)
+# 2023-11-01: (BluebonnetSK) Added Narrator to search, Fixed ASIN, Added Date Published & Duration, Added Debug to Album, Updated ArtistID  
 #
 # This file should be in your sources dir. %appdata%\roaming\mp3tag\data\sources
 # On Windows XP it's C:\Documents and Settings\*username*\Application Data\Mp3tag\data\sources
@@ -20,8 +21,8 @@
 [IndexUrl]=https://www.audible.com/search?ipRedirectOverride=true&overrideBaseCountry=true&keywords=
 [AlbumUrl]=https://www.audible.com
 [WordSeperator]=+
-[IndexFormat]=%_url%|%Album%|%Author%|%Duration%|%Year%|%Language%
-[SearchBy]=%artist% $regexp(%album%,'[- ]+cd ?\d+$',,1)
+[IndexFormat]=%_url%|%Album%|%Author%|%Narrator%|%Duration%|%Year%|%Language%
+[SearchBy]=$regexp(%artist%,'\([^)]*\)',,1) $regexp(%album%,'[- ]+cd ?\d+$',,1)
 [Encoding]=url-utf-8
 
 
@@ -80,6 +81,13 @@ do
 	say "|"
 
 
+	#Narrator
+	findinline "narratorLabel\">"
+	findinline "href="
+	findinline ">"
+	sayuntil "<"
+	say "|"
+
     # Duration
     findinline "runtimeLabel\">"
     findinline "bc-color-secondary\">"
@@ -105,6 +113,8 @@ while "bc-color-link" 99
 # ###################################################################
 #					A  L  B  U  M
 # ###################################################################
+#DebugWriteInput "C:\Users\%user%\Desktop\mp3tag2.html"
+#Debug "ON" "C:\Users\%user%\Desktop\mp3tagdebug2.txt"
 
 # Cover
 outputto "Coverurl"
@@ -137,7 +147,7 @@ if ":"
 	unspace
 	regexpreplace "  +" " "
 	sayuntil ":"
-	outputto "subtitle"
+	outputto "Subtitle"
 	movechar 2
 	sayuntil "<"
 else
@@ -151,14 +161,16 @@ endif
 # Subtitle of Album
 regexpreplace "  +" " "
 replace "<span class=\"bc-text bc-size-medium\" ></span>" ""
-findinline "bc-text bc-size-medium\" " 1 1
+findinline "bc-text bc-size-medium\" tabIndex='0' role='tabpanel' tabIndex='0' role='tabpanel'" 1 1
+movechar 1
 if ">"
-	movechar 1
 	outputto "Subtitle"
 	sayuntil "<"
 else
 	gotoline 1
 endif
+
+
 
 # Author
 outputto "Albumartist"
@@ -367,9 +379,11 @@ else
 		unspace
 		findinline ": \""
 		outputto "Year"
-		SayNChars 4
+#		SayNChars 4
+		sayuntil "\""
 		outputto "RELEASETIME"
-		sayoutput "Year"
+		movechar -10
+		SayNChars 4
 	else
 	endif
 endif
@@ -453,12 +467,6 @@ else
 	endif
 endif
 
-# Set Audible Albumartist ID
-outputto "AUDIBLE_ALBUMARTISTID"
-findline "product:[{"
-findinline "\"id\":\""
-sayuntil "\""
-
 # Duration
 outputto "DURATION"
 gotoline 1
@@ -471,4 +479,18 @@ outputto "DATE_PUBLISHED"
 gotoline 1
 findline "\"datePublished\": \""
 findinline "\"datePublished\": \""
+sayuntil "\""
+
+# Year
+outputto "Year"
+ifoutput "DATE_PUBLISHED"
+	set "Year"
+	sayoutput "DATE_PUBLISHED"
+endif
+
+
+# Set Audible Albumartist ID
+outputto "AUDIBLE_ALBUMARTISTID"
+findline "product:[{"
+findinline "\"id\":\"" 1 1
 sayuntil "\""
