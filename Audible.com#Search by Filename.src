@@ -17,7 +17,7 @@
 
 [Name]=Audible.com
 [BasedOn]=www.audible.com
-[IndexUrl]=https://www.audible.com/search?ipRedirectOverride=true&overrideBaseCountry=true&keywords=
+[IndexUrl]=https://www.audible.com/search?ipRedirectOverride=true&overrideBaseCountry=true&language=en_US&keywords=
 [AlbumUrl]=https://www.audible.com
 [WordSeperator]=+
 [IndexFormat]=%_url%|%Album%|%Author%|%Duration%|%Year%|%Language%
@@ -49,7 +49,7 @@ do
 	#  Url
 	findinline "href=\""
 	sayuntil "?"
-	say "?ipRedirectOverride=true&overrideBaseCountry"
+	say "?ipRedirectOverride=true&overrideBaseCountry&language=en_US"
 	say "|"
 
 	# Album
